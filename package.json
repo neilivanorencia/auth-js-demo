@@ -1,6 +1,7 @@
 {
   "name": "next-auth-demo",
   "version": "0.1.0",
+  "author": "Neil Ivan Orencia",
   "private": true,
   "scripts": {
     "dev": "next dev",
