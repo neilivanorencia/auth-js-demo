@@ -26,13 +26,13 @@ export const CardWrapper = ({
   showSocial,
 }: CardWrapperProps) => {
   return (
-    <Card className="mx-8 flex w-[800px] flex-col border-none shadow-lg outline-none transition duration-500 ease-in-out hover:shadow-2xl md:flex-row">
+    <Card className="mx-8 flex w-[800px] flex-col rounded-xl border-none shadow-lg outline-none transition duration-500 ease-in-out hover:shadow-2xl md:flex-row">
       <div className="relative h-48 w-full md:h-auto md:w-1/2">
         <Image
           src="/city-background.png"
           alt="City Background"
           fill
-          className="rounded-t-lg object-cover md:rounded-l-lg md:rounded-tr-none"
+          className="rounded-t-xl object-cover md:rounded-l-xl md:rounded-tr-none"
           priority
         />
       </div>
