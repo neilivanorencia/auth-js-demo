@@ -60,7 +60,7 @@ export const LoginForm = () => {
                       className="text-sm"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-rose-400" />
                 </FormItem>
               )}
             />
@@ -78,7 +78,7 @@ export const LoginForm = () => {
                       className="text-sm"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-rose-400" />
                 </FormItem>
               )}
             />
