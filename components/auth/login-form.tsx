@@ -1,8 +1,8 @@
 "use client";
 
 import * as z from "zod";
-
 import { useForm } from "react-hook-form";
+import { useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,13 @@ import { FormSuccess } from "@/components/form-success";
 import { Input } from "@/components/ui/input";
 import { LoginSchema } from "@/schemas";
 
+import { login } from "@/actions/login";
+
 export const LoginForm = () => {
+  const [error, SetError] = useState<string | undefined>("");
+  const [success, SetSuccess] = useState<string | undefined>("");
+  const [isPending, startTransition] = useTransition();
+
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -30,7 +36,15 @@ export const LoginForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    console.log(values);
+    startTransition(() => {
+      SetError("");
+      SetSuccess("");
+
+      login(values).then((data) => {
+        SetError(data.error);
+        SetSuccess(data.success);
+      });
+    });
   };
 
   return (
@@ -41,10 +55,7 @@ export const LoginForm = () => {
       showSocial
     >
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit((onSubmit) => {})}
-          className="space-y-6"
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
             <FormField
               control={form.control}
@@ -55,6 +66,7 @@ export const LoginForm = () => {
                   <FormControl>
                     <Input
                       {...field}
+                      disabled={isPending}
                       placeholder="Enter your email"
                       type="email"
                       className="text-sm"
@@ -73,6 +85,7 @@ export const LoginForm = () => {
                   <FormControl>
                     <Input
                       {...field}
+                      disabled={isPending}
                       placeholder="Enter your password"
                       type="password"
                       className="text-sm"
@@ -83,9 +96,10 @@ export const LoginForm = () => {
               )}
             />
           </div>
-          <FormError message="" />
-          <FormSuccess message="" />
+          <FormError message={error} />
+          <FormSuccess message={success} />
           <Button
+            disabled={isPending}
             type="submit"
             className="w-full bg-[#448A9C] transition duration-500 ease-in-out hover:-translate-y-0.5 hover:bg-[#448A9C]/90 hover:shadow-lg hover:shadow-[#448A9C]/40 active:translate-y-0 active:bg-[#448A9C] active:shadow-none"
           >
