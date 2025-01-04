@@ -27,7 +27,7 @@ export const CardWrapper = ({
 }: CardWrapperProps) => {
   return (
     <Card className="mx-8 flex w-[800px] flex-col rounded-xl border-none shadow-lg outline-none transition duration-500 ease-in-out hover:shadow-2xl md:flex-row">
-      <div className="relative h-48 w-full md:h-auto md:w-1/2">
+      <div className="relative h-48 w-full md:h-auto md:w-1/2 sm:block hidden">
         <Image
           src="/city-background.png"
           alt="City Background"
