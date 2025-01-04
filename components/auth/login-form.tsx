@@ -69,7 +69,7 @@ export const LoginForm = () => {
                       disabled={isPending}
                       placeholder="Enter your email"
                       type="email"
-                      className="text-sm"
+                      className="text-sm border-2 border-mint-300"
                     />
                   </FormControl>
                   <FormMessage className="text-rose-400" />
@@ -88,7 +88,7 @@ export const LoginForm = () => {
                       disabled={isPending}
                       placeholder="Enter your password"
                       type="password"
-                      className="text-sm"
+                      className="text-sm border-2 border-mint-300"
                     />
                   </FormControl>
                   <FormMessage className="text-rose-400" />

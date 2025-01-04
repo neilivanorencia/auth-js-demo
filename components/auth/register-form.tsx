@@ -58,7 +58,7 @@ export const RegisterForm = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
-          <FormField
+            <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
@@ -70,7 +70,7 @@ export const RegisterForm = () => {
                       disabled={isPending}
                       placeholder="Enter your name (first and last name)"
                       type="text"
-                      className="text-sm"
+                      className="border-2 border-mint-300 text-sm"
                     />
                   </FormControl>
                   <FormMessage className="text-rose-400" />
@@ -89,7 +89,7 @@ export const RegisterForm = () => {
                       disabled={isPending}
                       placeholder="Enter your email"
                       type="email"
-                      className="text-sm"
+                      className="border-2 border-mint-300 text-sm"
                     />
                   </FormControl>
                   <FormMessage className="text-rose-400" />
@@ -108,7 +108,7 @@ export const RegisterForm = () => {
                       disabled={isPending}
                       placeholder="Enter your password"
                       type="password"
-                      className="text-sm"
+                      className="border-2 border-mint-300 text-sm"
                     />
                   </FormControl>
                   <FormMessage className="text-rose-400" />
