@@ -51,3 +51,9 @@ export const RegisterSchema = z.object({
         "Password must contain at least one special character (!@#$%^&*)",
     }),
 });
+
+export const ResetSchema = z.object({
+  email: z.string().email({
+    message: "Email is required",
+  }),
+});
