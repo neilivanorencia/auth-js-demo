@@ -1,7 +1,6 @@
 "use client";
 
 import * as z from "zod";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,29 +18,28 @@ import {
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { Input } from "@/components/ui/input";
-import { LoginSchema } from "@/schemas";
+import { ResetSchema } from "@/schemas";
 
-import { login } from "@/actions/login";
+import { reset } from "@/actions/reset";
 
 export const ResetForm = () => {
   const [error, SetError] = useState<string | undefined>("");
   const [success, SetSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
 
-  const form = useForm<z.infer<typeof LoginSchema>>({
-    resolver: zodResolver(LoginSchema),
+  const form = useForm<z.infer<typeof ResetSchema>>({
+    resolver: zodResolver(ResetSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = (values: z.infer<typeof ResetSchema>) => {
     startTransition(() => {
       SetError("");
       SetSuccess("");
 
-      login(values).then((data) => {
+      reset(values).then((data) => {
         SetError(data?.error);
         SetSuccess(data?.success);
       });

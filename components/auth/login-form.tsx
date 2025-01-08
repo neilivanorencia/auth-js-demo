@@ -1,6 +1,7 @@
 "use client";
 
 import * as z from "zod";
+import Link from "next/link"
 import { useForm } from "react-hook-form";
 import { useSearchParams } from "next/navigation";
 import { useState, useTransition } from "react";
@@ -95,6 +96,11 @@ export const LoginForm = () => {
                       className="text-sm border-2 border-mint-300"
                     />
                   </FormControl>
+                  <Button size="sm" variant="link" asChild className="px-0 font-normal">
+                    <Link href="/reset">
+                      Forgot Password?
+                    </Link>
+                  </Button>
                   <FormMessage className="text-rose-400" />
                 </FormItem>
               )}
