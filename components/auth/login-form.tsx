@@ -1,7 +1,7 @@
 "use client";
 
 import * as z from "zod";
-import Link from "next/link"
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useSearchParams } from "next/navigation";
 import { useState, useTransition } from "react";
@@ -26,8 +26,12 @@ import { login } from "@/actions/login";
 
 export const LoginForm = () => {
   const searchParams = useSearchParams();
-  const urlError = searchParams.get("error") === "OAuthAccountNotLinked" ? "Email is already in use with another provider" : "";
+  const urlError =
+    searchParams.get("error") === "OAuthAccountNotLinked"
+      ? "Email is already in use with another provider"
+      : "";
 
+  const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [error, SetError] = useState<string | undefined>("");
   const [success, SetSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
@@ -41,14 +45,27 @@ export const LoginForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    startTransition(() => {
-      SetError("");
-      SetSuccess("");
+    SetError("");
+    SetSuccess("");
 
-      login(values).then((data) => {
-        SetError(data?.error);
-        SetSuccess(data?.success);
-      });
+    startTransition(() => {
+      login(values)
+        .then((data) => {
+          if (data?.error) {
+            form.reset();
+            SetError(data.error);
+          }
+
+          if (data?.success) {
+            form.reset();
+            SetSuccess(data.success);
+          }
+
+          if (data?.twoFactor) {
+            setShowTwoFactor(true);
+          }
+        })
+        .catch(() => SetError("Something went wrong"));
     });
   };
 
@@ -62,50 +79,75 @@ export const LoginForm = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-slate-600">Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="Enter your email"
-                      type="email"
-                      className="text-sm border-2 border-mint-300"
-                    />
-                  </FormControl>
-                  <FormMessage className="text-rose-400" />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-slate-600">Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="Enter your password"
-                      type="password"
-                      className="text-sm border-2 border-mint-300"
-                    />
-                  </FormControl>
-                  <Button size="sm" variant="link" asChild className="px-0 font-normal">
-                    <Link href="/reset">
-                      Forgot Password?
-                    </Link>
-                  </Button>
-                  <FormMessage className="text-rose-400" />
-                </FormItem>
-              )}
-            />
+            {showTwoFactor && (
+              <FormField
+                control={form.control}
+                name="code"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Two-Factor Authentication Code</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        disabled={isPending}
+                        placeholder="Enter your code"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
+            {!showTwoFactor && (
+              <>
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          disabled={isPending}
+                          placeholder="Enter your email"
+                          type="email"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          disabled={isPending}
+                          placeholder="Enter your password"
+                          type="password"
+                        />
+                      </FormControl>
+                      <Button
+                        size="sm"
+                        variant="link"
+                        asChild
+                        className="px-0 font-normal"
+                      >
+                        <Link href="reset">Forgot password?</Link>
+                      </Button>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </>
+            )}
           </div>
+
           <FormError message={error || urlError} />
           <FormSuccess message={success} />
           <Button
