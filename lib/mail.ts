@@ -94,3 +94,45 @@ For security reasons, never share this link with anyone.
     throw new Error("Failed to send password reset email");
   }
 };
+
+export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
+  const htmlContent = `
+    <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto;">
+      <h1 style="color: #333; margin-bottom: 20px;">Your Authentication Code</h1>
+      <p style="margin-bottom: 15px;">Your two-factor authentication code is:</p>
+      <div style="background-color: #f4f4f4; padding: 20px; border-radius: 5px; text-align: center; margin: 20px 0;">
+        <span style="font-size: 32px; font-family: monospace; letter-spacing: 3px; color: #333;">${token}</span>
+      </div>
+      <p style="color: #666; margin-top: 20px;">
+        This code will expire in 10 minutes. If you did not request this code, 
+        please ignore this email and ensure your account is secure.
+      </p>
+      <p style="color: #666; font-size: 14px; margin-top: 15px;">
+        For security reasons, never share this code with anyone.
+      </p>
+    </div>
+  `;
+
+  const plainTextContent = `
+Your Authentication Code
+
+Your two-factor authentication code is: ${token}
+
+This code will expire in 5 minutes. If you did not request this code, please ignore this email and ensure your account is secure.
+
+For security reasons, never share this code with anyone.
+  `.trim();
+
+  try {
+    await resend.emails.send({
+      from: "Auth.js Demo <onboarding@resend.dev>",
+      to: email,
+      subject: "Two-Factor Authentication Code",
+      html: htmlContent,
+      text: plainTextContent,
+    });
+  } catch (error) {
+    console.error("Failed to send 2FA code:", error);
+    throw new Error("Failed to send 2FA code");
+  }
+};
