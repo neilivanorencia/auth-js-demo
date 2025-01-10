@@ -155,7 +155,7 @@ export const LoginForm = () => {
             type="submit"
             className="w-full bg-[#448A9C] transition duration-500 ease-in-out hover:-translate-y-0.5 hover:bg-[#448A9C]/90 hover:shadow-lg hover:shadow-[#448A9C]/40 active:translate-y-0 active:bg-[#448A9C] active:shadow-none"
           >
-            Login
+            {showTwoFactor ? "Submit Code" : "Login"}
           </Button>
         </form>
       </Form>
