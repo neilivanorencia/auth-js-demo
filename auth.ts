@@ -9,7 +9,7 @@ import { getUserById } from "@/data/user";
 export const { auth, handlers, signIn, signOut } = NextAuth({
   pages: {
     signIn: "/login",
-    error: "error",
+    error: "/error",
   },
   events: {
     async linkAccount({ user }) {
@@ -25,20 +25,25 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   },
   callbacks: {
     async signIn({ user, account }) {
+      // Skip 2FA check for OAuth providers
       if (account?.provider !== "credentials") return true;
 
       if (typeof user.id !== "string") return false;
       const existingUser = await getUserById(user.id);
 
+      // Verify email is confirmed
       if (!existingUser?.emailVerified) return false;
 
-      if (!existingUser.isTwoFactorEnabled) {
+      // Check 2FA only if it's enabled for the user
+      if (existingUser.isTwoFactorEnabled) {
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(
           existingUser.id,
         );
 
+        // If 2FA is enabled but no confirmation exists, prevent login
         if (!twoFactorConfirmation) return false;
 
+        // Clean up the used 2FA confirmation
         await db.twoFactorConfirmation.deleteMany({
           where: {
             id: twoFactorConfirmation.id,
