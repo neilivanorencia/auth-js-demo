@@ -19,7 +19,7 @@ export const UserButton = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Avatar className="rounded-lg">
+        <Avatar className="rounded-full outline outline-2 outline-offset-2 outline-teal-400">
           <AvatarImage src={user?.image || ""} alt="Profile" />
           <AvatarFallback>
             <FaRegUser className="text-slate-600" />
