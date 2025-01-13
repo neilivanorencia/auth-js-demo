@@ -45,9 +45,9 @@ export const AdminPage = () => {
         </p>
       </CardHeader>
 
-      <CardContent className="space-y-6 p-6">
+      <CardContent className="space-y-6">
         <RoleGate allowedRole={UserRole.ADMIN}>
-          <div className="rounded-lg bg-emerald-50 p-4 text-center">
+          <div className="rounded-lg text-center">
             <FormSuccess message="You have administrative access" />
           </div>
         </RoleGate>
@@ -63,7 +63,7 @@ export const AdminPage = () => {
               </div>
               <Button
                 onClick={onApiRouteClick}
-                className="bg-slate-800 hover:bg-slate-700"
+                className="bg-teal-500 transition duration-300 ease-in-out hover:bg-teal-400"
               >
                 Test Access
               </Button>
@@ -82,7 +82,7 @@ export const AdminPage = () => {
               </div>
               <Button
                 onClick={onServerActionClick}
-                className="bg-slate-800 hover:bg-slate-700"
+                className="bg-teal-500 transition duration-300 ease-in-out hover:bg-teal-400"
               >
                 Test Access
               </Button>
