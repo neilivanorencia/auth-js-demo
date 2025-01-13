@@ -10,7 +10,8 @@ const ServerPage = async () => {
     <UserInfo
       user={user}
       label="Server Page"
-      icon={<CiServer className="h-10 w-10 text-slate-600" />}
+      icon={<CiServer className="h-8 w-8 text-slate-600" />}
+      description="Displays server information for some reference"
     />
   );
 };
