@@ -12,7 +12,7 @@ interface UserInfoProps {
 
 export const UserInfo = ({ user, label, icon }: UserInfoProps) => {
   return (
-    <Card className="w-full max-w-[900px] bg-gradient-to-br from-sky-50 via-teal-50/90 to-emerald-50/80 transition duration-300 ease-in-out hover:shadow-lg">
+    <Card className="w-full max-w-[900px] bg-gradient-to-br from-sky-50 via-teal-50/90 to-emerald-50/80 transition duration-300 ease-in-out hover:shadow-xl">
       <CardHeader className="flex flex-row items-center justify-center gap-x-2 p-2 md:p-5">
         {icon}
         <p className="text-center text-lg font-normal text-slate-800">
