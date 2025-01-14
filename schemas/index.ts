@@ -79,3 +79,7 @@ export const ResetSchema = z.object({
     message: "Email is required",
   }),
 });
+
+export const SettingsSchema = z.object({
+  name: z.optional(z.string()),
+})
