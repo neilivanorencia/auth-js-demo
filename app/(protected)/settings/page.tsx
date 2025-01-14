@@ -22,10 +22,18 @@ import {
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { settings } from "@/actions/settings";
 import { SettingsSchema } from "@/schemas";
 
 import { IoSettingsOutline } from "react-icons/io5";
+import { UserRole } from "@prisma/client";
 
 const SettingsPage = () => {
   const [error, setError] = useState<string | undefined>();
@@ -42,6 +50,7 @@ const SettingsPage = () => {
       email: user?.email || undefined,
       password: undefined,
       newPassword: undefined,
+      role: user?.role || undefined,
     },
   });
 
@@ -141,6 +150,36 @@ const SettingsPage = () => {
                         disabled={isPending}
                       />
                     </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="role"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Role</FormLabel>
+                    <Select
+                      disabled={isPending}
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      value={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a role" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value={String(UserRole.ADMIN)}>
+                          Admin
+                        </SelectItem>
+                        <SelectItem value={String(UserRole.USER)}>
+                          User
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
