@@ -17,9 +17,13 @@ export const UserInfo = ({ user, label, icon, description }: UserInfoProps) => {
       <CardHeader className="space-y-4 p-6">
         <div className="flex items-center justify-center space-x-3">
           {icon}
-          <p className="text-2xl font-semibold text-slate-700">{label}</p>
+          <p className="text-xl font-semibold text-slate-700 sm:text-2xl">
+            {label}
+          </p>
         </div>
-        <p className="text-center text-sm text-slate-500">{description}</p>
+        <p className="text-center text-xs text-slate-500 sm:text-sm">
+          {description}
+        </p>
       </CardHeader>
       <CardContent className="pt-6">
         <div className="space-y-2">

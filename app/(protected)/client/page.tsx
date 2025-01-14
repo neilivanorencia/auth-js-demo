@@ -12,7 +12,7 @@ const ClientPage = () => {
     <UserInfo
       user={user}
       label="Client Page"
-      icon={<BsPersonBadge className="h-8 w-8 text-slate-600" />}
+      icon={<BsPersonBadge className="h-6 w-6 text-slate-700 sm:h-8 sm:w-8" />}
       description="Displays client information for some reference"
     />
   );
