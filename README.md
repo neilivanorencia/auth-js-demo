@@ -113,3 +113,132 @@ Auth.js Demo is a simple, functional demo of some of the most important function
 - **Tailwind CSS** - A utility-first CSS framework that allows for quick and flexible styling using predefined classes.
 - **Typescript** - A strongly typed programming language that builds on JavaScript by adding static types.
 - **Zod** - TypeScript-first schema declaration and validation library designed to provide a type-safe way to validate JavaScript objects.
+
+## Project Structure
+
+<details>
+  <summary>See project structure here</summary>
+
+```plaintext
+└── 📁.vscode
+    └── settings.json
+└── 📁actions
+    └── admin.ts
+    └── login.ts
+    └── logout.ts
+    └── register.ts
+    └── reset-password.ts
+    └── reset.ts
+    └── settings.ts
+    └── verification.ts
+└── 📁app
+    └── 📁(auth)
+        └── 📁error
+            └── page.tsx
+        └── layout.tsx
+        └── 📁login
+            └── page.tsx
+        └── 📁register
+            └── page.tsx
+        └── 📁reset
+        └── 📁reset-password
+            └── page.tsx
+            └── page.tsx
+        └── 📁verification
+            └── page.tsx
+    └── 📁(protected)
+        └── 📁_components
+            └── navigation-bar.tsx
+        └── 📁admin
+            └── page.tsx
+        └── 📁client
+            └── page.tsx
+        └── layout.tsx
+        └── 📁server
+            └── page.tsx
+        └── 📁settings
+            └── page.tsx
+    └── 📁api
+        └── 📁admin
+            └── route.ts
+        └── 📁auth
+            └── 📁[...nextauth]
+                └── route.ts
+    └── globals.css
+    └── icon.svg
+    └── layout.tsx
+    └── page.tsx
+└── 📁components
+    └── 📁auth
+        └── back-button.tsx
+        └── card-wrapper.tsx
+        └── error-card.tsx
+        └── header.tsx
+        └── login-button.tsx
+        └── login-form.tsx
+        └── logout-button.tsx
+        └── register-form.tsx
+        └── reset-form.tsx
+        └── reset-password.tsx
+        └── role-gate.tsx
+        └── social.tsx
+        └── user-button.tsx
+        └── verification-form.tsx
+    └── 📁ui
+        └── avatar.tsx
+        └── badge.tsx
+        └── button.tsx
+        └── card.tsx
+        └── dropdown-menu.tsx
+        └── form.tsx
+        └── input.tsx
+        └── label.tsx
+        └── select.tsx
+        └── sonner.tsx
+        └── switch.tsx
+    └── form-error.tsx
+    └── form-success.tsx
+    └── user-info.tsx
+└── 📁data
+    └── account.ts
+    └── password-reset-token.ts
+    └── two-factor-confirmation.ts
+    └── two-factor-token.ts
+    └── user.ts
+    └── verification-token.ts
+└── 📁hooks
+    └── use-current-role.ts
+    └── use-current-user.ts
+└── 📁lib
+    └── auth.ts
+    └── db.ts
+    └── mail.ts
+    └── tokens.ts
+    └── utils.ts
+└── 📁prisma
+    └── schema.prisma
+└── 📁public
+    └── city-background.png
+    └── website-preview.png
+└── 📁schemas
+    └── index.ts
+└── .eslintrc.json
+└── .gitignore
+└── auth.config.ts
+└── auth.ts
+└── components.json
+└── LICENSE
+└── middleware.ts
+└── next-auth.d.ts
+└── next.config.mjs
+└── package-lock.json
+└── package.json
+└── postcss.config.js
+└── prettier.config.js
+└── README.md
+└── routes.ts
+└── tailwind.config.ts
+└── tsconfig.json
+```
+
+</details>
