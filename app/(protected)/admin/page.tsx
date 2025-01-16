@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { admin } from "@/actions/admin";
 import { Shield } from "lucide-react";
 
-export const AdminPage = () => {
+const AdminPage = () => {
   const onApiRouteClick = async () => {
     fetch("/api/admin").then((response) => {
       if (response.ok) {
