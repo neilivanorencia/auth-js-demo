@@ -36,7 +36,7 @@ export const AdminPage = () => {
         <div className="flex items-center justify-center space-x-3">
           <Shield className="h-6 w-6 text-slate-700 sm:h-8 sm:w-8" />
           <h2 className="text-xl font-semibold text-slate-700 sm:text-2xl">
-            Admin Dashboard
+            Admin Page
           </h2>
         </div>
         <p className="text-center text-xs text-slate-500 sm:text-sm">
