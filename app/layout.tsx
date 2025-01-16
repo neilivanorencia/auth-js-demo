@@ -11,6 +11,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Auth.js Demo — A Simple Authentication System",
+  description:
+    "Auth.js Demo is a simple, functional demo of some of the most important functionalities within Auth.js.",
   metadataBase: new URL("https://auth-js-demo.vercel.app/"),
   keywords: [
     "Auth.js",
