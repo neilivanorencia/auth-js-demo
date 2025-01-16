@@ -242,3 +242,11 @@ Auth.js Demo is a simple, functional demo of some of the most important function
 ```
 
 </details>
+
+## Contribution
+
+This project is intended as a personal web project to learn and improve my personal skills when it comes to web development. But if you would like to suggest improvements or modifications, feel free to fork the repository and submit a pull request.
+
+## License
+
+Distributed under the [MIT License](https://opensource.org/license/mit). See `LICENSE` for more information.
