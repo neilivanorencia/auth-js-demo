@@ -103,3 +103,13 @@ Auth.js Demo is a simple, functional demo of some of the most important function
   <summary>See screenshot</summary><br>
 <img src="https://i.imgur.com/QS9Qq5M.png" alt="Auth.js Demo Admin Page" />
 </details>
+
+## Technology Stack
+
+- **Auth.js (formerly known as NextAuth.js)** - A JavaScript library designed for implementing authentication in web applications.
+- **Next.js** - A powerful React framework used for building fast and optimized web applications.
+- **React** - A JavaScript library made by Facebook primarily used for building user interfaces for web applications.
+- **shadcn/ui** - A UI component library specifically designed for building user interfaces in web applications using React.
+- **Tailwind CSS** - A utility-first CSS framework that allows for quick and flexible styling using predefined classes.
+- **Typescript** - A strongly typed programming language that builds on JavaScript by adding static types.
+- **Zod** - TypeScript-first schema declaration and validation library designed to provide a type-safe way to validate JavaScript objects.
