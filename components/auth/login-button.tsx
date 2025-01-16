@@ -18,10 +18,6 @@ export const LoginButton = ({
     router.push("login");
   };
 
-  if (mode === "modal") {
-    return <span></span>;
-  }
-
   return (
     <span onClick={onClick} className="cursor-pointer">
       {children}

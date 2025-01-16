@@ -25,6 +25,7 @@ import { LoginSchema } from "@/schemas";
 import { login } from "@/actions/login";
 
 export const LoginForm = () => {
+  const callbackUrl = useSearchParams().get("callbackUrl");
   const searchParams = useSearchParams();
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked"
@@ -49,7 +50,7 @@ export const LoginForm = () => {
     SetSuccess("");
 
     startTransition(() => {
-      login(values)
+      login(values, callbackUrl)
         .then((data) => {
           if (data?.error) {
             form.reset();
