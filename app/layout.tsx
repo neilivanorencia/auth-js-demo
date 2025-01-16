@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "Auth.js Demo",
     images: [
       {
-        url: "/website-preview.jpg",
+        url: "/website-preview.png",
         width: 2400,
         height: 1260,
         alt: "Auth.js Demo Website Preview",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
       "Auth.js Demo is a simple, functional demo of some of the most important functionalities within Auth.js.",
     images: [
       {
-        url: "/website-preview.jpg",
+        url: "/website-preview.png",
         width: 2400,
         height: 1260,
         alt: "Auth.js Demo Website Preview",
